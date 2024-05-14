@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">StoryView</string>
+    <string name="logo_app">Logo StoryView App</string>
+    <string name="title_landing_1">Welcome to</string>
+    <string name="title_landing_2">StoryView App!</string>
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="message_welcome_page">"Share Your Story with Us on <b>StoryView</b>"</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="title_login_page">Let\'s Start Share Your Story!</string>
+    <string name="name">Username</string>
+    <string name="loginButton">Login?</string>
+    <string name="registerButton">Register?</string>
+    <string name="email_error">Enter the text that matches the format!</string>
+    <string name="password_error">Password cannot be less than 8 characters!</string>
+    <string name="null_coloumn">Fill in All Fields First</string>
+    <string name="null_name">Fill in All Fields First</string>
+    <string name="null_email">Isi Email Terlebih Dahulu</string>
+    <string name="null_password">Isi Password Terlebih Dahulu</string>
+    <string name="next">Lanjut</string>
+    <string name="success_registration">Successful Registration! Your account has been successfully created.</string>
+
+    <string name="email_not_registered">Email not Registered</string>
+    <string name="wrong_password">Password that you enter is not correct</string>
+    <string name="story_image">Photo Story</string>
+    <string name="story">StoryViewApp</string>
+    <string name="change_language">Change Language</string>
+    <string name="log_out">Log Out</string>
+    <string name="add_story">Add to Story</string>
+    <string name="story_error">Story Not Found!</string>
+    <string name="story_description">Story Description</string>
+    <string name="picture">Picture</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Gallery</string>
+    <string name="description">Description Text</string>
+    <string name="more_menu">More Menu</string>
+    <string name="error_file">Invalid file input</string>
+    <string name="upload_success">Story Upload Successfully</string>
+    <string name="login_success">Login Success!</string>
+    <string name="login_failed">Login Failed, Try Again!</string>
+</resources>

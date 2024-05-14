@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.StoryViewApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blueYoung</item>
+        <item name="colorPrimaryDark">@color/blueDark</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorSecondary">@color/blueDark</item>
+        <item name="backgroundColor">@color/notSoBlack</item>
+    </style>
+</resources>
