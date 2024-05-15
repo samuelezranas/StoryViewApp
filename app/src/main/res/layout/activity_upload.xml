@@ -5,18 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
-    tools:context=".ui.upload.UploadActivity">
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ProgressBar>
+    tools:context=".ui.main.UploadActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_image"
@@ -34,13 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/picture"
-            android:background="@mipmap/just_logo_app"
+            app:srcCompat="@mipmap/just_logo_app"
             tools:ignore="ImageContrastCheck" />
 
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:id="@+id/button_layout"
+        android:id="@+id/linear_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -53,7 +42,7 @@
             android:id="@+id/btn_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:text="@string/camera"
             android:textColor="@color/white"
@@ -63,7 +52,7 @@
             android:id="@+id/btn_gallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="@string/gallery"
             android:textColor="@color/white"
@@ -72,7 +61,7 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description_input_layout"
+        android:id="@+id/description_box_input"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginStart="50dp"
@@ -81,7 +70,7 @@
         android:hint="@string/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_layout">
+        app:layout_constraintTop_toBottomOf="@id/linear_button">
 
         <EditText
             android:id="@+id/box_add_description"
@@ -100,16 +89,29 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_add"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:text="@string/add_story"
         android:textColor="@color/white"
         android:backgroundTint="?attr/colorPrimary"
-        app:layout_constraintEnd_toEndOf="@id/description_input_layout"
-        app:layout_constraintStart_toStartOf="@id/description_input_layout"
-        app:layout_constraintTop_toBottomOf="@id/description_input_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description_box_input"
         tools:ignore="VisualLintButtonSize" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:lottie_fileName="bubble_loading.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.storyviewapp.R
 import com.dicoding.storyviewapp.utils.ViewModelFactory
 import com.dicoding.storyviewapp.adapter.MainAdapter
-import com.dicoding.storyviewapp.data.response.ListStoryItem
+import com.dicoding.storyviewapp.data.remote.response.ListStoryItem
 import com.dicoding.storyviewapp.databinding.ActivityMainBinding
-import com.dicoding.storyviewapp.ui.start.LandingActivity
-import com.dicoding.storyviewapp.ui.upload.UploadActivity
+import com.dicoding.storyviewapp.ui.main.start.LandingActivity
+import androidx.appcompat.widget.Toolbar
+import com.dicoding.storyviewapp.ui.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
 
         getSession()
         showStory()
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
 
         binding.addStory.setOnClickListener {
             val intent = Intent(this, UploadActivity::class.java)
@@ -80,26 +85,31 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
-            R.id.action_change_language ->  {
+        return when (item.itemId) {
+            R.id.action_change_language -> {
                 val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(intent)
+                finish()
+                true  // Return true to indicate the item has been handled
+            }
+            R.id.action_theme -> {
+                val intent = Intent(this@MainActivity, SettingActivity::class.java)
                 startActivity(intent)
                 true
             }
-            R.id.action_logout ->  {
+            R.id.action_logout -> {
                 viewModel.logout()
                 val intent = Intent(this, LandingActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
-                true
+                true  // Return true to indicate the item has been handled
             }
             else -> super.onOptionsItemSelected(item)
         }

@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.start.SplashActivity">
+    android:background="@drawable/gradient_splash"
+    app:layoutDescription="@xml/activity_splash_scene"
+    tools:context=".ui.main.start.SplashActivity">
 
     <ImageView
         android:id="@+id/splashImage"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@mipmap/just_logo_app"
+        android:layout_width="141dp"
+        android:layout_height="152dp"
         android:contentDescription="@string/app_name"
+        android:src="@mipmap/just_logo_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/danbury_heavy"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/splashImage"
+        app:layout_constraintStart_toStartOf="@id/splashImage"
+        app:layout_constraintTop_toBottomOf="@id/splashImage" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

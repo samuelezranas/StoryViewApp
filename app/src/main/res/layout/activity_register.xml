@@ -5,26 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
-    tools:context=".ui.register.RegisterActivity">
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    tools:context=".ui.main.RegisterActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/graphic_design_landing" />
+        app:srcCompat="@drawable/graphic_design_login" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -34,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:alpha="0"
-        android:text="@string/title_signup_page"
+        android:text="@string/title_register"
         android:textColor="?attr/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -53,6 +45,7 @@
         android:alpha="0"
         android:text="@string/name"
         android:textColor="?attr/colorPrimary"
+        android:fontFamily="@font/danbury_heavy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         tools:alpha="100" />
@@ -76,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="@font/mont_heavy"
             android:hint="@string/name"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +83,7 @@
         android:alpha="0"
         android:text="@string/email"
         android:textColor="?attr/colorPrimary"
+        android:fontFamily="@font/danbury_heavy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout"
         tools:alpha="100" />
@@ -107,12 +102,13 @@
         app:startIconDrawable="@drawable/ic_baseline_email_24"
         tools:alpha="100">
 
-        <com.dicoding.storyviewapp.custom.CustomEmailEditText
+        <com.dicoding.storyviewapp.custom.CustomEmailReq
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/email"
+            android:fontFamily="@font/mont_heavy"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,6 +121,7 @@
         android:alpha="0"
         android:text="@string/password"
         android:textColor="?attr/colorPrimary"
+        android:fontFamily="@font/danbury_heavy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
         tools:alpha="100" />
@@ -144,12 +141,13 @@
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         tools:alpha="100">
 
-        <com.dicoding.storyviewapp.custom.CustomPasswordEditText
+        <com.dicoding.storyviewapp.custom.CustomPasswordReq
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password"
+            android:fontFamily="@font/mont_heavy"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -165,7 +163,7 @@
         android:shadowRadius="@integer/material_motion_duration_long_2"
         android:text="@string/register"
         android:textColor="@color/white"
-        android:fontFamily="@font/mont_heavy"
+        android:fontFamily="@font/danbury_heavy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
@@ -178,7 +176,7 @@
         android:layout_height="64dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.4"
+        app:layout_constraintGuide_percent="0.3"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -187,5 +185,17 @@
         android:layout_height="64dp"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.0" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:lottie_fileName="bubble_loading.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

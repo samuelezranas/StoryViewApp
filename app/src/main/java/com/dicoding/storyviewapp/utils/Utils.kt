@@ -1,5 +1,6 @@
 package com.dicoding.storyviewapp.utils
 
+import android.app.Application
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
@@ -13,6 +14,7 @@ import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils
 import com.dicoding.storyviewapp.BuildConfig
+import com.dicoding.storyviewapp.R
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -48,7 +50,7 @@ private fun getImageUriForPreQ(context: Context): Uri {
     if (imageFile.parentFile?.exists() == false) imageFile.parentFile?.mkdir()
     return FileProvider.getUriForFile(
         context,
-        "${BuildConfig.APPLICATION_ID}.fileprovider",
+        "${BuildConfig.APPLICATION_ID}.fileProvider",
         imageFile
     )
 }
@@ -100,4 +102,16 @@ fun Bitmap.getRotatedBitmap(file: File): Bitmap? {
 fun createTempFile(context: Context): File {
     val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     return File.createTempFile(timeStamp, ".jpg", storageDir)
+}
+
+fun createFile(application: Application): File {
+    val mediaDir = application.externalMediaDirs.firstOrNull()?.let {
+        File(it, application.resources.getString(R.string.app_name)).apply { mkdirs() }
+    }
+
+    val outputDirectory = if (
+        mediaDir != null && mediaDir.exists()
+    ) mediaDir else application.filesDir
+
+    return File(outputDirectory, "$timeStamp.jpg")
 }

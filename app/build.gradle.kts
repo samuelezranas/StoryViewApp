@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
     id("kotlin-parcelize")
 }
 
@@ -13,7 +14,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "6.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,9 +39,19 @@ android {
         viewBinding = true
         buildConfig = true
     }
+    sourceSets {
+        getByName("main") {
+            assets {
+                srcDirs("src\\main\\assets", "src\\main\\assets")
+            }
+        }
+    }
 }
 
 dependencies {
+
+    val lottieVersion = "3.4.0"
+    val cameraXVersion = "1.3.3"
     // Core AndroidX libraries
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -50,6 +61,11 @@ dependencies {
     // Image loading and manipulation
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    // CameraX
+    implementation ("androidx.camera:camera-camera2:$cameraXVersion")
+    implementation ("androidx.camera:camera-lifecycle:$cameraXVersion")
+    implementation ("androidx.camera:camera-view:$cameraXVersion")
+
     // Network communication
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -58,7 +74,14 @@ dependencies {
     // Lifecycle and UI ViewModel support
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("androidx.activity:activity-ktx:1.9.0")
+
+    // Glass-morphism Background
+    implementation ("jp.wasabeef:blurry:4.0.0")
+    implementation("androidx.camera:camera-lifecycle:1.3.3")
+
+    // Lottie Loading
+    implementation ("com.airbnb.android:lottie:$lottieVersion")
 
     // Testing dependencies
     testImplementation("junit:junit:4.13.2")

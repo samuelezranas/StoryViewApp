@@ -3,12 +3,12 @@ package com.dicoding.storyviewapp.utils
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.storyviewapp.data.UserRepository
+import com.dicoding.storyviewapp.data.database.UserRepository
 import com.dicoding.storyviewapp.di.Injection
-import com.dicoding.storyviewapp.ui.login.LoginViewModel
-import com.dicoding.storyviewapp.ui.main.MainViewModel
-import com.dicoding.storyviewapp.ui.upload.UploadViewModel
-import com.dicoding.storyviewapp.ui.register.RegisterViewModel
+import com.dicoding.storyviewapp.ui.viewmodel.LoginViewModel
+import com.dicoding.storyviewapp.ui.viewmodel.MainViewModel
+import com.dicoding.storyviewapp.ui.viewmodel.RegisterViewModel
+import com.dicoding.storyviewapp.ui.viewmodel.UploadViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 

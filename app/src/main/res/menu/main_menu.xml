@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_more"
-        android:icon="@drawable/round_expand_more_24"
-        android:title="@string/more_menu"
-        app:showAsAction="ifRoom">
-        <menu>
-            <item
-                android:id="@+id/action_change_language"
-                android:icon="@drawable/round_language_24"
-                android:title="@string/change_language"
-                app:showAsAction="always" />
-            <item
-                android:id="@+id/action_logout"
-                android:icon="@drawable/round_exit_to_app_24"
-                android:title="@string/log_out"
-                app:showAsAction="always" />
-        </menu>
-    </item>
+        android:id="@+id/action_change_language"
+        android:title="@string/change_language"
+        app:showAsAction="never"
+        android:icon="@drawable/round_language_24" />
+
+    <item
+        android:id="@+id/action_theme"
+        android:title="@string/change_theme"
+        app:showAsAction="never"
+        android:icon="@drawable/baseline_dark_mode_24" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/log_out"
+        app:showAsAction="never"
+        android:icon="@drawable/round_exit_to_app_24" />
+
 </menu>
