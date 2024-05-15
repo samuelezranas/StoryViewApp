@@ -8,16 +8,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.dicoding.storyviewapp.R
 import com.dicoding.storyviewapp.databinding.ActivityLandingBinding
 import com.dicoding.storyviewapp.ui.login.LoginActivity
 import com.dicoding.storyviewapp.ui.register.RegisterActivity
 
 class LandingActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLandingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

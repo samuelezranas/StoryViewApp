@@ -17,6 +17,7 @@ import com.dicoding.storyviewapp.data.response.ListStoryItem
 import com.dicoding.storyviewapp.databinding.ActivityMainBinding
 import com.dicoding.storyviewapp.ui.start.LandingActivity
 import com.dicoding.storyviewapp.ui.upload.UploadActivity
+import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
@@ -29,8 +30,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.show()
+
         getSession()
         showStory()
+
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
 
         binding.addStory.setOnClickListener {
             val intent = Intent(this, UploadActivity::class.java)
@@ -80,26 +88,26 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
-            R.id.action_change_language ->  {
+        return when (item.itemId) {
+            R.id.action_change_language -> {
                 val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
                 startActivity(intent)
-                true
+                finish()
+                true  // Return true to indicate the item has been handled
             }
-            R.id.action_logout ->  {
+            R.id.action_logout -> {
                 viewModel.logout()
                 val intent = Intent(this, LandingActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
-                true
+                true  // Return true to indicate the item has been handled
             }
             else -> super.onOptionsItemSelected(item)
         }

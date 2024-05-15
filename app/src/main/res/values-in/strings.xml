@@ -1,2 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">StoryView</string>
+    <string name="logo_app">Logo Aplikasi StoryView</string>
+    <string name="landing_app">Halaman Arahan</string>
+    <string name="title_landing_1">Selamat Datang di</string>
+    <string name="title_landing_2">Aplikasi StoryView!</string>
+    <string name="title_login">Ayo Mulai Bagikan Ceritamu!</string>
+    <string name="title_register">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="register">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="message_welcome_page">"Bagikan Ceritamu dengan Kami di <b>StoryView</b>"</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="name">Nama Pengguna</string>
+    <string name="loginButton">Masuk?</string>
+    <string name="registerButton">Daftar?</string>
+    <string name="email_error">Masukkan teks yang sesuai dengan format!</string>
+    <string name="password_error">Kata sandi tidak boleh kurang dari 8 karakter!</string>
+    <string name="null_coloumn">Isi Semua Kolom Terlebih Dahulu</string>
+    <string name="null_name">Isi Semua Kolom Terlebih Dahulu</string>
+    <string name="null_email">Isi Email terlebih dahulu</string>
+    <string name="null_password">Isi Kata Sandi</string>
+    <string name="next">Berikutnya</string>
+    <string name="success_registration">Pendaftaran Berhasil! Akun Anda telah berhasil dibuat.</string>
+    <string name="email_not_registered">Email tidak Terdaftar</string>
+    <string name="wrong_password">Kata sandi yang Anda masukkan tidak benar</string>
+    <string name="story_image">Foto Cerita</string>
+    <string name="story">StoryViewApp</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="log_out">Keluar</string>
+    <string name="add_story">Tambahkan ke Cerita</string>
+    <string name="story_error">Cerita Tidak Ditemukan!</string>
+    <string name="story_description">Deskripsi Cerita</string>
+    <string name="picture">Gambar</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="description">Teks Deskripsi</string>
+    <string name="more_menu">Menu Lainnya</string>
+    <string name="error_file">Input file tidak valid</string>
+    <string name="upload_success">Cerita Berhasil Diunggah</string>
+    <string name="login_success">Masuk Berhasil!</string>
+    <string name="login_failed">Gagal Masuk, Coba Lagi!</string>
+</resources>

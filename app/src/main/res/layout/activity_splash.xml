@@ -5,17 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_splash"
     tools:context=".ui.start.SplashActivity">
 
     <ImageView
         android:id="@+id/splashImage"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@mipmap/just_logo_app"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/app_name"
+        android:fontFamily="@font/danbury_heavy"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/splashImage"
+        app:layout_constraintStart_toStartOf="@id/splashImage"
+        app:layout_constraintTop_toBottomOf="@id/splashImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
