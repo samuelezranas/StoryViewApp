@@ -83,6 +83,9 @@ dependencies {
     // Lottie Loading
     implementation ("com.airbnb.android:lottie:$lottieVersion")
 
+    // Glassmorphism Background
+    implementation ("jp.wasabeef:blurry:4.0.0")
+
     // Testing dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
