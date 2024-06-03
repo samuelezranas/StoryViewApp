@@ -1,4 +1,4 @@
-package com.dicoding.storyviewapp.ui.main
+package com.dicoding.storyviewapp.ui.main.start
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator

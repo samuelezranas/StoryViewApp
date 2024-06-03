@@ -7,7 +7,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.dicoding.storyviewapp.data.database.UserModel
+import com.dicoding.storyviewapp.data.repository.UserModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

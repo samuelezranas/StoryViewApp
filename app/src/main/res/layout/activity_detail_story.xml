@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/name"
-            android:fontFamily="@font/mont_heavy"
+            android:fontFamily="@font/montserrat_bold"
             android:textSize="25sp"
             android:textStyle="bold"
             android:transitionName="name" />
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/story_description"
-            android:fontFamily="@font/mont_extralight"
+            android:fontFamily="@font/montserrat_medium"
             android:transitionName="description" />
 
 

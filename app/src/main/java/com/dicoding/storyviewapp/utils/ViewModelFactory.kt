@@ -3,7 +3,7 @@ package com.dicoding.storyviewapp.utils
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.storyviewapp.data.database.UserRepository
+import com.dicoding.storyviewapp.data.repository.UserRepository
 import com.dicoding.storyviewapp.di.Injection
 import com.dicoding.storyviewapp.ui.viewmodel.LoginViewModel
 import com.dicoding.storyviewapp.ui.viewmodel.MainViewModel

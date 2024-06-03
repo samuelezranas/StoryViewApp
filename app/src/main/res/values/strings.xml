@@ -34,8 +34,10 @@
     <string name="story_description">Story Description</string>
     <string name="picture">Picture</string>
     <string name="camera">Camera</string>
+    <string name="shoot">Shoot Photo</string>
     <string name="gallery">Gallery</string>
     <string name="description">Description Text</string>
+    <string name="title_maps">Google Maps</string>
     <string name="more_menu">More Menu</string>
 
     <string name="error_file">Invalid file input</string>
@@ -45,5 +47,6 @@
     <string name="warning_fill_file">Fill all the file!</string>
     <string name="warning_description">Fill the Description first!</string>
     <string name="success_alert">Success!</string>
+    <string name="error_alert">Error shown!</string>
 
 </resources>

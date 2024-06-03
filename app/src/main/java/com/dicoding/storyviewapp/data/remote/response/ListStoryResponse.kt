@@ -1,23 +1,30 @@
 package com.dicoding.storyviewapp.data.remote.response
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 data class ListStoryResponse(
 
-    @field:SerializedName("listStory")
+	@field:SerializedName("listStory")
 	val listStory: List<ListStoryItem> = emptyList(),
 
-    @field:SerializedName("error")
+	@field:SerializedName("error")
 	val error: Boolean? = null,
 
-    @field:SerializedName("message")
+	@field:SerializedName("message")
 	val message: String? = null
 )
 
 @Parcelize
+@Entity(tableName = "story_list")
 data class ListStoryItem(
+
+	@PrimaryKey
+	@field:SerializedName("id")
+	val id: String,
 
 	@field:SerializedName("photoUrl")
 	val photoUrl: String? = null,
@@ -33,9 +40,6 @@ data class ListStoryItem(
 
 	@field:SerializedName("lon")
 	val lon: Double? = null,
-
-	@field:SerializedName("id")
-	val id: String? = null,
 
 	@field:SerializedName("lat")
 	val lat: Double? = null

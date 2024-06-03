@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
-    tools:context=".ui.main.RegisterActivity">
+    tools:context=".ui.main.start.RegisterActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -30,6 +30,7 @@
         android:textColor="?attr/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +45,7 @@
         android:layout_marginTop="8dp"
         android:alpha="0"
         android:text="@string/name"
+        android:textSize="12sp"
         android:textColor="?attr/colorPrimary"
         android:fontFamily="@font/danbury_heavy"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,10 +71,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:fontFamily="@font/mont_heavy"
+            android:fontFamily="@font/montserrat_medium"
             android:hint="@string/name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:paddingStart="48dp"
+            tools:ignore="ExtraText,RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/emailTextView"
@@ -108,8 +113,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/email"
-            android:fontFamily="@font/mont_heavy"
-            android:inputType="textEmailAddress" />
+            android:fontFamily="@font/montserrat_medium"
+            android:inputType="textEmailAddress"
+            android:paddingStart="48dp"
+            tools:ignore="ExtraText,RtlSymmetry"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -146,9 +153,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
             android:hint="@string/password"
-            android:fontFamily="@font/mont_heavy"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingStart="48dp"
+            tools:ignore="ExtraText,RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

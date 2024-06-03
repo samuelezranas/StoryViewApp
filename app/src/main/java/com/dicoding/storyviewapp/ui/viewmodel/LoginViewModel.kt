@@ -3,8 +3,8 @@ package com.dicoding.storyviewapp.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dicoding.storyviewapp.data.database.UserModel
-import com.dicoding.storyviewapp.data.database.UserRepository
+import com.dicoding.storyviewapp.data.repository.UserModel
+import com.dicoding.storyviewapp.data.repository.UserRepository
 import com.dicoding.storyviewapp.data.remote.response.LoginResponse
 import kotlinx.coroutines.launch
 

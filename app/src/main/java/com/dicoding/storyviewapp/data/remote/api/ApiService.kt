@@ -13,6 +13,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface ApiService {
     //register
@@ -32,7 +33,19 @@ interface ApiService {
         @Field("password") password: String
     ): Call<LoginResponse>
 
-    //list story
+    @GET("stories")
+    suspend fun getStories(
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 20
+    ): ListStoryResponse
+
+    @GET("stories")
+    suspend fun getStoriesWithLocation(
+        @Query("location") location: Int = 1,
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 100
+    ): ListStoryResponse
+
     @GET("stories")
     fun getStories(): Call<ListStoryResponse>
 
