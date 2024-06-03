@@ -10,8 +10,6 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.storyviewapp.databinding.ActivityLandingBinding
-import com.dicoding.storyviewapp.ui.main.LoginActivity
-import com.dicoding.storyviewapp.ui.main.RegisterActivity
 
 class LandingActivity : AppCompatActivity() {
 

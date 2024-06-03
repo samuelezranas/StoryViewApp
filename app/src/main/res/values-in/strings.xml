@@ -35,8 +35,10 @@
     <string name="story_description">Deskripsi Cerita</string>
     <string name="picture">Gambar</string>
     <string name="camera">Kamera</string>
+    <string name="shoot">Tangkap Gambar</string>
     <string name="gallery">Galeri</string>
     <string name="description">Teks Deskripsi</string>
+    <string name="title_maps">Google Maps</string>
     <string name="more_menu">Menu Lainnya</string>
 
     <string name="error_file">Invalid file input</string>
@@ -45,5 +47,6 @@
     <string name="login_failed">Login Failed, Try Again!</string>
     <string name="warning_fill_file">Tambahkan semua berkas!!</string>
     <string name="warning_description">Tambahkan deskripsi terlebih dahulu!</string>
-    <string name="success_alert">Success!</string>
+    <string name="success_alert">Sukses!</string>
+    <string name="error_alert">Error muncul!</string>
 </resources>

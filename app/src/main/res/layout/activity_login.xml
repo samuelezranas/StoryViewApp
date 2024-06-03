@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
-    tools:context=".ui.main.LoginActivity">
+    tools:context=".ui.main.start.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -31,7 +31,7 @@
         android:text="@string/title_login"
         android:textColor="?attr/colorPrimary"
         android:textSize="20sp"
-        android:fontFamily="@font/mont_heavy"
+        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +46,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:alpha="0"
+        android:fontFamily="@font/audiowide"
         android:text="@string/email"
         android:textColor="?attr/colorPrimary"
-        android:fontFamily="@font/danbury_heavy"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         tools:alpha="100" />
@@ -71,7 +72,7 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/mont_heavy"
+            android:fontFamily="@font/montserrat_medium"
             android:ems="10"
             android:inputType="textEmailAddress"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -85,8 +86,9 @@
         android:layout_marginTop="8dp"
         android:alpha="0"
         android:text="@string/password"
+        android:textSize="16sp"
         android:textColor="?attr/colorPrimary"
-        android:fontFamily="@font/danbury_heavy"
+        android:fontFamily="@font/audiowide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailETLayout"
         tools:alpha="100" />
@@ -110,7 +112,7 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/mont_heavy"
+            android:fontFamily="@font/montserrat_medium"
             android:ems="10"
             android:inputType="textPassword"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -126,6 +128,7 @@
         android:alpha="0"
         android:backgroundTint="?attr/colorAccent"
         android:text="@string/login"
+        android:textSize="14sp"
         android:fontFamily="@font/danbury_heavy"
         android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +147,7 @@
         android:text="@string/registerButton"
         android:textAlignment="center"
         android:textColor="?attr/colorPrimary"
-        android:fontFamily="@font/mont_heavy"
+        android:fontFamily="@font/montserrat_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"

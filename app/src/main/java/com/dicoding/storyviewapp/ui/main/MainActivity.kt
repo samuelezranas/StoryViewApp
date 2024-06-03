@@ -6,32 +6,32 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.storyviewapp.R
-import com.dicoding.storyviewapp.utils.ViewModelFactory
+import com.dicoding.storyviewapp.adapter.LoadingStateAdapter
 import com.dicoding.storyviewapp.adapter.MainAdapter
-import com.dicoding.storyviewapp.data.remote.response.ListStoryItem
 import com.dicoding.storyviewapp.databinding.ActivityMainBinding
 import com.dicoding.storyviewapp.ui.main.start.LandingActivity
-import androidx.appcompat.widget.Toolbar
 import com.dicoding.storyviewapp.ui.viewmodel.MainViewModel
+import com.dicoding.storyviewapp.utils.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
     private lateinit var binding: ActivityMainBinding
+    private var mainAdapter = MainAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showRecyclerView()
         getSession()
-        showStory()
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -41,48 +41,50 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, UploadActivity::class.java)
             startActivity(intent)
         }
+        binding.openMap.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun showRecyclerView() {
+        val mainLayoutManager = LinearLayoutManager(this)
+        binding.rvList.apply {
+            layoutManager = mainLayoutManager
+            setHasFixedSize(true)
+            adapter = mainAdapter
+        }
     }
 
     private fun getSession() {
         showLoading(true)
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
-                val intent = Intent(this, LandingActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
+                startActivity(Intent(this, LandingActivity::class.java))
                 finish()
             } else {
-                showLoading(true)
-                viewModel.listStory().observe(this) { stories ->
-                    showLoading(false)
-                    if (stories != null) {
-                        showStoryList(stories)
-                    } else {
-                        showToast(getString(R.string.story_error))
-                    }
-                }
+                showLoading(false)
+                getDataStories()
             }
         }
     }
 
-    private fun showStory() {
-        val layoutManager = LinearLayoutManager(this)
-        binding.rvList.layoutManager = layoutManager
+    private fun getDataStories() {
+
+        binding.rvList.adapter = mainAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                mainAdapter.retry()
+            }
+        )
+
+        viewModel.listStory.observe(this) {
+            mainAdapter.submitData(lifecycle, it)
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
         binding.addStory.isEnabled = !isLoading
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
-    private fun showStoryList(stories: List<ListStoryItem>?) {
-        val adapter = MainAdapter()
-        adapter.submitList(stories)
-        binding.rvList.adapter = adapter
-    }
-
-    private fun showToast(message: String?) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

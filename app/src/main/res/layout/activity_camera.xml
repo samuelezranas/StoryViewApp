@@ -21,7 +21,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/round_camera_24" />
+        app:srcCompat="@drawable/round_camera_24"
+        android:importantForAccessibility="no" />
 
     <ImageView
         android:id="@+id/switchCamera"
@@ -31,6 +32,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="@+id/viewFinder"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/round_flip_camera_android_24" />
+        app:srcCompat="@drawable/round_flip_camera_android_24"
+        android:importantForAccessibility="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

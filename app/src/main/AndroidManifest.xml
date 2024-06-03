@@ -4,10 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.camera" />
-
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
@@ -22,6 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryViewApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBL1ivhwWccabvJ1yxx2KD_dY3EFH5l9CM" />
+
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false" />
@@ -35,13 +41,17 @@
             android:name=".ui.main.SettingActivity"
             android:exported="false"/>
         <activity
+            android:name=".ui.main.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_maps"/>
+        <activity
             android:name=".ui.main.DetailStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.LoginActivity"
+            android:name=".ui.main.start.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.RegisterActivity"
+            android:name=".ui.main.start.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.start.LandingActivity"
@@ -58,13 +68,16 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
+            android:authorities="${applicationId}.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

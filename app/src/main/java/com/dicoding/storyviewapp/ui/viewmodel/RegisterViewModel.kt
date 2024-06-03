@@ -1,7 +1,7 @@
 package com.dicoding.storyviewapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.dicoding.storyviewapp.data.database.UserRepository
+import com.dicoding.storyviewapp.data.repository.UserRepository
 
 class RegisterViewModel(private val userRepository: UserRepository) : ViewModel() {
 

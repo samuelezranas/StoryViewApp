@@ -1,4 +1,4 @@
-package com.dicoding.storyviewapp.ui.main
+package com.dicoding.storyviewapp.ui.main.start
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -15,9 +15,10 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.dicoding.storyviewapp.R
 import com.dicoding.storyviewapp.utils.ViewModelFactory
-import com.dicoding.storyviewapp.data.database.UserModel
+import com.dicoding.storyviewapp.data.repository.UserModel
 import com.dicoding.storyviewapp.data.remote.response.LoginResponse
 import com.dicoding.storyviewapp.databinding.ActivityLoginBinding
+import com.dicoding.storyviewapp.ui.main.MainActivity
 import com.dicoding.storyviewapp.ui.viewmodel.LoginViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.launch

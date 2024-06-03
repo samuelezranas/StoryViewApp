@@ -1,23 +1,38 @@
-package com.dicoding.storyviewapp.data.database
+package com.dicoding.storyviewapp.data.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
+import com.dicoding.storyviewapp.data.database.StoryRoomDatabase
 import com.dicoding.storyviewapp.data.datastore.UserPreference
+import com.dicoding.storyviewapp.data.remote.api.ApiConfig
 import com.dicoding.storyviewapp.data.remote.api.ApiService
 import com.dicoding.storyviewapp.data.remote.response.ListStoryItem
 import com.dicoding.storyviewapp.data.remote.response.ListStoryResponse
 import com.dicoding.storyviewapp.data.remote.response.LoginResponse
 import com.dicoding.storyviewapp.data.remote.response.UploadResponse
+import com.dicoding.storyviewapp.result.Result
+import com.dicoding.storyviewapp.utils.StoryRemoteMediator
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.HttpException
 import retrofit2.Response
 
 class UserRepository private constructor(
     private val apiService: ApiService,
-    private val userPreference: UserPreference
+    private val userPreference: UserPreference,
+    private val storyRoomDatabase: StoryRoomDatabase
 ) {
     private val _login = MutableLiveData<LoginResponse>()
     var login: MutableLiveData<LoginResponse> = _login
@@ -49,26 +64,24 @@ class UserRepository private constructor(
         })
     }
 
-    fun listStory() {
-        _isLoading.value = true
-        val client = apiService.getStories()
-        client.enqueue(object : Callback<ListStoryResponse> {
-            override fun onResponse(
-                call: Call<ListStoryResponse>,
-                response: Response<ListStoryResponse>
-            ) {
-                if (response.isSuccessful) {
-                    _isLoading.value = false
-                    _listStory.value = response.body()?.listStory
+    fun listStory() : LiveData<PagingData<ListStoryItem>> {
+        @OptIn(ExperimentalPagingApi::class)
+        return try {
+            Pager(
+                config = PagingConfig(
+                    pageSize = 5
+                ),
+                remoteMediator = StoryRemoteMediator(storyRoomDatabase, userPreference),
+                pagingSourceFactory = {
+                    storyRoomDatabase.storyDao().getAllStory()
                 }
-            }
-
-            override fun onFailure(call: Call<ListStoryResponse>, t: Throwable) {
-                _isLoading.value = false
-                Log.e("Repository", "error: ${t.message}")
-            }
-        })
+            ).liveData
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
     }
+
     fun uploadStory(file: MultipartBody.Part, description: RequestBody) {
         _isLoading.value = true
         val client = apiService.uploadImage(file, description)
@@ -89,6 +102,23 @@ class UserRepository private constructor(
         })
     }
 
+    fun getStoriesWithLocation(): LiveData<Result<ListStoryResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val getToken = userPreference.getSession().first()
+            val apiService = ApiConfig.getApiService(getToken.token)
+            val locationStory = apiService.getStoriesWithLocation()
+            emit(Result.Success(locationStory))
+        } catch (e: HttpException) {
+            val error = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(error, UploadResponse::class.java)
+            val errorMessage = errorResponse?.message ?: "An error occurred"
+            emit(Result.Error("Failed: $errorMessage"))
+        } catch (e: Exception) {
+            emit(Result.Error(e.toString()))
+        }
+    }
+
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSession(user)
     }
@@ -106,10 +136,10 @@ class UserRepository private constructor(
         private var instance: UserRepository? = null
 
         fun getInstance(
-            apiService: ApiService, userPreference: UserPreference
+            apiService: ApiService, userPreference: UserPreference, storyRoomDatabase: StoryRoomDatabase
         ): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(apiService, userPreference)
+                instance ?: UserRepository(apiService, userPreference, storyRoomDatabase)
             }.also { instance = it }
 
         fun clearInstance() {

@@ -1,4 +1,4 @@
-package com.dicoding.storyviewapp.data.database
+package com.dicoding.storyviewapp.data.repository
 
 data class UserModel(
     val token: String,
