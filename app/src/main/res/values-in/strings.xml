@@ -17,7 +17,7 @@
     <string name="registerButton">Daftar?</string>
     <string name="email_error">Masukkan teks yang sesuai dengan format!</string>
     <string name="password_error">Kata sandi tidak boleh kurang dari 8 karakter!</string>
-    <string name="null_coloumn">Isi Semua Kolom Terlebih Dahulu</string>
+    <string name="null_column">Isi Semua Kolom Terlebih Dahulu</string>
     <string name="null_name">Isi Semua Kolom Terlebih Dahulu</string>
     <string name="null_email">Isi Email terlebih dahulu</string>
     <string name="null_password">Isi Kata Sandi</string>
@@ -40,11 +40,11 @@
     <string name="description">Teks Deskripsi</string>
     <string name="title_maps">Google Maps</string>
     <string name="more_menu">Menu Lainnya</string>
-
-    <string name="error_file">Invalid file input</string>
-    <string name="upload_success">Story Upload Successfully</string>
-    <string name="login_success">Login Success!</string>
-    <string name="login_failed">Login Failed, Try Again!</string>
+    <string name="error_camera">Gagal dalam memunculkan kamera!</string>
+    <string name="error_file">Masukan file tidak valid</string>
+    <string name="upload_success">Unggah Cerita Berhasil</string>
+    <string name="login_success">Login Berhasil!</string>
+    <string name="login_failed">Login Gagal, Coba Lagi!</string>
     <string name="warning_fill_file">Tambahkan semua berkas!!</string>
     <string name="warning_description">Tambahkan deskripsi terlebih dahulu!</string>
     <string name="success_alert">Sukses!</string>

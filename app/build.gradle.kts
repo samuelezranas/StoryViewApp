@@ -57,6 +57,8 @@ dependencies {
 
     val lottieVersion = "3.4.0"
     val cameraXVersion = "1.3.3"
+    val verLifecycle = "2.8.1"
+    val verRoom = "2.6.1"
 
     // Core AndroidX libraries
     implementation("androidx.core:core-ktx:1.13.1")
@@ -82,8 +84,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
     // Lifecycle and UI ViewModel support
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$verLifecycle")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$verLifecycle")
     implementation("androidx.activity:activity-ktx:1.9.0")
 
     // Lottie Loading
@@ -100,10 +102,10 @@ dependencies {
 
     // Pagging & Room Runtime
     implementation("androidx.paging:paging-runtime-ktx:3.3.0")
-    implementation("androidx.room:room-paging:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
-    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-paging:$verRoom")
+    implementation ("androidx.room:room-ktx:$verRoom")
+    ksp("androidx.room:room-compiler:$verRoom")
+    implementation ("androidx.room:room-runtime:$verRoom")
 
     // Data storage
     implementation("androidx.datastore:datastore-preferences:1.1.1")

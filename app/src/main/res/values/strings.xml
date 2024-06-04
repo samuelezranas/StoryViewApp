@@ -16,7 +16,7 @@
     <string name="registerButton">Register?</string>
     <string name="email_error">Enter the text that matches the format!</string>
     <string name="password_error">Password cannot be less than 8 characters!</string>
-    <string name="null_coloumn">Fill in All Fields First</string>
+    <string name="null_column">Fill in All Fields First</string>
     <string name="null_name">Fill the name box</string>
     <string name="null_email">Fill the Email box</string>
     <string name="null_password">Fill the Password</string>
@@ -39,7 +39,7 @@
     <string name="description">Description Text</string>
     <string name="title_maps">Google Maps</string>
     <string name="more_menu">More Menu</string>
-
+    <string name="error_camera">Failed to bring up the camera</string>
     <string name="error_file">Invalid file input</string>
     <string name="upload_success">Story Upload Successfully</string>
     <string name="login_success">Login Success!</string>
