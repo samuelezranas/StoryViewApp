@@ -49,9 +49,9 @@ class UploadActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
+                showToast(getString(R.string.permission_granted))
             } else {
-                Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
+                showToast(getString(R.string.permission_denied))
             }
         }
 
@@ -116,7 +116,7 @@ class UploadActivity : AppCompatActivity() {
         }
     }
 
-    fun File.toUri(): Uri = Uri.fromFile(this)
+    private fun File.toUri(): Uri = Uri.fromFile(this)
 
     private fun showImage() {
         currentImageUri?.let {

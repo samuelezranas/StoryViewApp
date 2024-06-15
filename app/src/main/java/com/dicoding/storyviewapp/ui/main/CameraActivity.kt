@@ -52,11 +52,7 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    Toast.makeText(
-                        this@CameraActivity,
-                        "Missed capturing image.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    showToast(getString(R.string.miss_capture))
                 }
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val intent = Intent()

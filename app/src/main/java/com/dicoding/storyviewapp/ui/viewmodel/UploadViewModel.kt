@@ -1,7 +1,7 @@
 package com.dicoding.storyviewapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.dicoding.storyviewapp.data.repository.UserRepository
+import com.dicoding.storyviewapp.data.datastore.UserRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 

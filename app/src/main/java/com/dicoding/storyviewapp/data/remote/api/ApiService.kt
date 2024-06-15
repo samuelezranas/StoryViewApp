@@ -28,10 +28,10 @@ interface ApiService {
     //login
     @FormUrlEncoded
     @POST("login")
-    fun login(
+    suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Call<LoginResponse>
+    ): LoginResponse
 
     @GET("stories")
     suspend fun getStories(
@@ -46,9 +46,6 @@ interface ApiService {
         @Query("size") size: Int = 100
     ): ListStoryResponse
 
-    @GET("stories")
-    fun getStories(): Call<ListStoryResponse>
-
     //upload story
     @Multipart
     @POST("stories")
@@ -56,5 +53,4 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
     ): Call<UploadResponse>
-
 }

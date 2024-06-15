@@ -7,8 +7,8 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.storyviewapp.databinding.ItemStoryBinding
 
-class LoadingStateAdapter(private val retry: () -> Unit ): LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
-    class LoadingStateViewHolder(private val binding: ItemStoryBinding, retry: () -> Unit):
+class LoadingStateAdapter : LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
+    class LoadingStateViewHolder(private val binding: ItemStoryBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(loadState: LoadState){
             if (loadState is LoadState.Error){
@@ -26,6 +26,6 @@ class LoadingStateAdapter(private val retry: () -> Unit ): LoadStateAdapter<Load
         loadState: LoadState
     ): LoadingStateViewHolder {
         val binding = ItemStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return LoadingStateViewHolder(binding, retry)
+        return LoadingStateViewHolder(binding)
     }
 }

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Application & More Menu-->
     <string name="app_name">StoryView</string>
     <string name="logo_app">Logo Aplikasi StoryView</string>
+    <string name="story">StoryViewApp</string>
+    <string name="more_menu">Menu Lainnya</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="change_theme">Ganti Tema</string>
+    <string name="log_out">Keluar</string>
+    <string name="permission_granted">Permintaan akses diberikan</string>
+    <string name="permission_denied">Permintaan akses ditolak</string>
+
+    <!-- Landing, Login & Register Page -->
     <string name="landing_app">Halaman Arahan</string>
     <string name="title_landing_1">Selamat Datang di</string>
     <string name="title_landing_2">Aplikasi StoryView!</string>
@@ -25,11 +35,10 @@
     <string name="success_registration">Pendaftaran Berhasil! Akun Anda telah berhasil dibuat.</string>
     <string name="email_not_registered">Email tidak Terdaftar</string>
     <string name="wrong_password">Kata sandi yang Anda masukkan tidak benar</string>
-    <string name="story_image">Foto Cerita</string>
-    <string name="story">StoryViewApp</string>
-    <string name="change_language">Ganti Bahasa</string>
-    <string name="change_theme">Ganti Tema</string>
-    <string name="log_out">Keluar</string>
+    <string name="login_success">Login Berhasil!</string>
+    <string name="login_failed">Login Gagal, Coba Lagi!</string>
+
+    <!-- Add Story & Camera -->
     <string name="add_story">Tambahkan ke Cerita</string>
     <string name="story_error">Cerita Tidak Ditemukan!</string>
     <string name="story_description">Deskripsi Cerita</string>
@@ -38,15 +47,20 @@
     <string name="shoot">Tangkap Gambar</string>
     <string name="gallery">Galeri</string>
     <string name="description">Teks Deskripsi</string>
-    <string name="title_maps">Google Maps</string>
-    <string name="more_menu">Menu Lainnya</string>
     <string name="error_camera">Gagal dalam memunculkan kamera!</string>
     <string name="error_file">Masukan file tidak valid</string>
+    <string name="story_image">Foto Cerita</string>
     <string name="upload_success">Unggah Cerita Berhasil</string>
-    <string name="login_success">Login Berhasil!</string>
-    <string name="login_failed">Login Gagal, Coba Lagi!</string>
     <string name="warning_fill_file">Tambahkan semua berkas!!</string>
     <string name="warning_description">Tambahkan deskripsi terlebih dahulu!</string>
+    <string name="miss_capture">Gagal Menangkap Gambar</string>
     <string name="success_alert">Sukses!</string>
     <string name="error_alert">Error muncul!</string>
+
+    <!-- Maps Variation -->
+    <string name="title_maps">Google Maps</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
 </resources>

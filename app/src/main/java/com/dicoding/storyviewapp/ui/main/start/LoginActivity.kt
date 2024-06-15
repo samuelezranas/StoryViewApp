@@ -4,36 +4,34 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.storyviewapp.R
-import com.dicoding.storyviewapp.utils.ViewModelFactory
-import com.dicoding.storyviewapp.data.repository.UserModel
-import com.dicoding.storyviewapp.data.remote.response.LoginResponse
+import com.dicoding.storyviewapp.custom.CustomPasswordReq
+import com.dicoding.storyviewapp.data.datastore.UserModel
 import com.dicoding.storyviewapp.databinding.ActivityLoginBinding
+import com.dicoding.storyviewapp.result.Result
 import com.dicoding.storyviewapp.ui.main.MainActivity
 import com.dicoding.storyviewapp.ui.viewmodel.LoginViewModel
-import com.google.gson.Gson
-import kotlinx.coroutines.launch
-import retrofit2.HttpException
+import com.dicoding.storyviewapp.utils.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
     private val viewModel by viewModels<LoginViewModel> {
         ViewModelFactory.getInstance(this)
     }
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var passwordReq: CustomPasswordReq
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        passwordReq = binding.passwordEditText
 
         showLoading(false)
 
@@ -41,9 +39,6 @@ class LoginActivity : AppCompatActivity() {
         loginAction()
         playAnimation()
 
-        binding.registerButton.setOnClickListener {
-            goRegister()
-        }
     }
 
     private fun setupView() {
@@ -69,47 +64,37 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            showLoading(true) // Tampilkan loading bar saat proses login dimulai
+            showLoading(true)
 
-            try {
-                viewModel.login(email, password)
-                viewModel.login.observe(this) {
-                    Log.e("Login", "it: $it")
-                    showLoading(false) // Sembunyikan loading bar saat login berhasil
-                    showToast(getString(R.string.login_success))
-                    saveUser(
-                        UserModel(
-                            it.loginResult.token,
-                            it.loginResult.name,
-                            it.loginResult.userId,
+            viewModel.login(email, password)
+            viewModel.loginResult.observe(this) { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        showLoading(true)
+                    }
+                    is Result.Success -> {
+                        showLoading(false)
+                        showToast(getString(R.string.login_success))
+
+                        val user = UserModel(
+                            result.data.loginResult.token,
+                            result.data.loginResult.name,
+                            result.data.loginResult.userId,
                             true
                         )
-                    )
+                        viewModel.saveSession(user)
+
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        showToast(result.error)
+                    }
                 }
-            } catch (e: HttpException) {
-                showLoading(false) // Sembunyikan loading bar saat login gagal
-                val errorBody = e.response()?.errorBody()?.string()
-                val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
-                showToast(errorResponse.message)
             }
         }
-    }
-
-
-    private fun saveUser(session: UserModel) {
-        lifecycleScope.launch {
-            viewModel.saveSession(session)
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            ViewModelFactory.clearInstance()
-            startActivity(intent)
-        }
-    }
-
-    private fun goRegister() {
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 
     private fun showToast(message: String?) {
@@ -138,6 +123,7 @@ class LoginActivity : AppCompatActivity() {
         val passwordEditTextLayout =
             ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val login = ObjectAnimator.ofFloat(binding.loginButton, View.ALPHA, 1f).setDuration(100)
+        val register = ObjectAnimator.ofFloat(binding.registerButton, View.ALPHA, 1f).setDuration(100)
 
         AnimatorSet().apply {
             playSequentially(
@@ -146,7 +132,8 @@ class LoginActivity : AppCompatActivity() {
                 emailEditTextLayout,
                 passwordTextView,
                 passwordEditTextLayout,
-                login
+                login,
+                register
             )
             startDelay = 100
         }.start()

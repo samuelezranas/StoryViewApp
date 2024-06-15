@@ -3,7 +3,7 @@ package com.dicoding.storyviewapp.di
 import android.content.Context
 import com.dicoding.storyviewapp.data.database.StoryRoomDatabase
 import com.dicoding.storyviewapp.data.datastore.UserPreference
-import com.dicoding.storyviewapp.data.repository.UserRepository
+import com.dicoding.storyviewapp.data.datastore.UserRepository
 import com.dicoding.storyviewapp.data.datastore.UserDataStore
 import com.dicoding.storyviewapp.data.remote.api.ApiConfig
 import kotlinx.coroutines.flow.first

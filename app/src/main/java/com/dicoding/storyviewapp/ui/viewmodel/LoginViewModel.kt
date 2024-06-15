@@ -1,22 +1,27 @@
 package com.dicoding.storyviewapp.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dicoding.storyviewapp.data.repository.UserModel
-import com.dicoding.storyviewapp.data.repository.UserRepository
+import com.dicoding.storyviewapp.data.datastore.UserModel
+import com.dicoding.storyviewapp.data.datastore.UserRepository
 import com.dicoding.storyviewapp.data.remote.response.LoginResponse
+import com.dicoding.storyviewapp.result.Result
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val repository: UserRepository) : ViewModel()  {
+class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    var login : MutableLiveData<LoginResponse> = repository.login
+    val loginResult: LiveData<Result<LoginResponse>> get() = userRepository.loginResult
 
-    fun login(email: String, password: String) = repository.login(email, password)
+    fun login(email: String, password: String) {
+        viewModelScope.launch {
+            userRepository.login(email, password)
+        }
+    }
 
     fun saveSession(user: UserModel) {
         viewModelScope.launch {
-            repository.saveSession(user)
+            userRepository.saveSession(user)
         }
     }
 }

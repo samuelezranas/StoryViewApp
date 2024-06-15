@@ -6,9 +6,11 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.storyviewapp.R
 import com.dicoding.storyviewapp.adapter.LoadingStateAdapter
@@ -36,6 +38,15 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        val typeface = ResourcesCompat.getFont(this, R.font.diploma_regular)
+        toolbar.post {
+            try {
+                val titleTextView = toolbar.getChildAt(0) as? TextView
+                titleTextView?.typeface = typeface
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
 
         binding.addStory.setOnClickListener {
             val intent = Intent(this, UploadActivity::class.java)
@@ -49,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showRecyclerView() {
         val mainLayoutManager = LinearLayoutManager(this)
+        showLoading(true)
         binding.rvList.apply {
             layoutManager = mainLayoutManager
             setHasFixedSize(true)
@@ -72,9 +84,7 @@ class MainActivity : AppCompatActivity() {
     private fun getDataStories() {
 
         binding.rvList.adapter = mainAdapter.withLoadStateFooter(
-            footer = LoadingStateAdapter {
-                mainAdapter.retry()
-            }
+            footer = LoadingStateAdapter()
         )
 
         viewModel.listStory.observe(this) {

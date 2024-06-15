@@ -1,12 +1,12 @@
 package com.dicoding.storyviewapp.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CompoundButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.storyviewapp.data.datastore.SettingPreferences
 import com.dicoding.storyviewapp.data.datastore.SettingDataStore
+import com.dicoding.storyviewapp.data.datastore.SettingPreferences
 import com.dicoding.storyviewapp.databinding.ActivitySettingBinding
 import com.dicoding.storyviewapp.ui.viewmodel.SettingViewModel
 import com.dicoding.storyviewapp.utils.SettingViewModelFactory
@@ -26,7 +26,7 @@ class SettingActivity : AppCompatActivity() {
 
         val settingViewModel = ViewModelProvider(this,
             SettingViewModelFactory(pref)
-        ).get(SettingViewModel::class.java)
+        )[SettingViewModel::class.java]
 
         settingViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {

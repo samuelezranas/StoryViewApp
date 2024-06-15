@@ -1,4 +1,4 @@
-package com.dicoding.storyviewapp.data.repository
+package com.dicoding.storyviewapp.data.datastore
 
 data class UserModel(
     val token: String,

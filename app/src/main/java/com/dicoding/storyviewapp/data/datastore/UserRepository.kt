@@ -1,4 +1,4 @@
-package com.dicoding.storyviewapp.data.repository
+package com.dicoding.storyviewapp.data.datastore
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,7 +10,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.dicoding.storyviewapp.data.database.StoryRoomDatabase
-import com.dicoding.storyviewapp.data.datastore.UserPreference
 import com.dicoding.storyviewapp.data.remote.api.ApiConfig
 import com.dicoding.storyviewapp.data.remote.api.ApiService
 import com.dicoding.storyviewapp.data.remote.response.ListStoryItem
@@ -34,37 +33,34 @@ class UserRepository private constructor(
     private val userPreference: UserPreference,
     private val storyRoomDatabase: StoryRoomDatabase
 ) {
-    private val _login = MutableLiveData<LoginResponse>()
-    var login: MutableLiveData<LoginResponse> = _login
 
-    private var _listStory = MutableLiveData<List<ListStoryItem>>()
-    var listStory: MutableLiveData<List<ListStoryItem>> = _listStory
+    private val _loginResult = MutableLiveData<Result<LoginResponse>>()
+    val loginResult: LiveData<Result<LoginResponse>> = _loginResult
 
     private val _isLoading = MutableLiveData<Boolean>()
 
     suspend fun register(name: String, email: String, password: String) = apiService.register(name, email, password)
 
-    fun login(email: String, password: String) {
-        _isLoading.value = true
-        val client = apiService.login(email, password)
-        client.enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(
-                call: Call<LoginResponse>,
-                response: Response<LoginResponse>
-            ) {
-                if (response.isSuccessful) {
-                    _isLoading.value = false
-                    _login.value = response.body()
-                }
+    suspend fun login(email: String, password: String) {
+        _loginResult.postValue(Result.Loading)
+        try {
+            val response = apiService.login(email, password)
+            if (!response.error) {
+                _loginResult.postValue(Result.Success(response))
+            } else {
+                _loginResult.postValue(Result.Error("Login failed: ${response.message}"))
             }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("Repository", "error: ${t.message}")
-            }
-        })
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
+            _loginResult.postValue(Result.Error("Login failed: ${errorResponse.message}"))
+        } catch (e: Exception) {
+            _loginResult.postValue(Result.Error("An unexpected error occurred: ${e.message}"))
+        }
     }
 
-    fun listStory() : LiveData<PagingData<ListStoryItem>> {
+
+    fun listStory(): LiveData<PagingData<ListStoryItem>> {
         @OptIn(ExperimentalPagingApi::class)
         return try {
             Pager(
@@ -136,7 +132,9 @@ class UserRepository private constructor(
         private var instance: UserRepository? = null
 
         fun getInstance(
-            apiService: ApiService, userPreference: UserPreference, storyRoomDatabase: StoryRoomDatabase
+            apiService: ApiService,
+            userPreference: UserPreference,
+            storyRoomDatabase: StoryRoomDatabase
         ): UserRepository =
             instance ?: synchronized(this) {
                 instance ?: UserRepository(apiService, userPreference, storyRoomDatabase)

@@ -1,6 +1,17 @@
 <resources>
+
+    <!-- Application & Menu -->
     <string name="app_name">StoryView</string>
+    <string name="story_image">Photo Story</string>
+    <string name="story">StoryViewApp</string>
     <string name="logo_app">Logo StoryView App</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_theme">Change Theme</string>
+    <string name="log_out">Log Out</string>
+    <string name="permission_granted">Permission request granted</string>
+    <string name="permission_denied">Permission request denied</string>
+
+    <!-- Landing, Login & Register Page -->
     <string name="landing_app">Landing Page</string>
     <string name="title_landing_1">Welcome to</string>
     <string name="title_landing_2">StoryView App!</string>
@@ -24,11 +35,10 @@
     <string name="success_registration">Successful Registration! Your account has been successfully created.</string>
     <string name="email_not_registered">Email not Registered</string>
     <string name="wrong_password">Password that you enter is not correct</string>
-    <string name="story_image">Photo Story</string>
-    <string name="story">StoryViewApp</string>
-    <string name="change_language">Change Language</string>
-    <string name="change_theme">Change Theme</string>
-    <string name="log_out">Log Out</string>
+    <string name="login_success">Login Success!</string>
+    <string name="login_failed">Login Failed, Try Again!</string>
+
+    <!-- Add Story & Camera -->
     <string name="add_story">Add to Story</string>
     <string name="story_error">Story Not Found!</string>
     <string name="story_description">Story Description</string>
@@ -37,16 +47,21 @@
     <string name="shoot">Shoot Photo</string>
     <string name="gallery">Gallery</string>
     <string name="description">Description Text</string>
-    <string name="title_maps">Google Maps</string>
     <string name="more_menu">More Menu</string>
     <string name="error_camera">Failed to bring up the camera</string>
     <string name="error_file">Invalid file input</string>
     <string name="upload_success">Story Upload Successfully</string>
-    <string name="login_success">Login Success!</string>
-    <string name="login_failed">Login Failed, Try Again!</string>
     <string name="warning_fill_file">Fill all the file!</string>
     <string name="warning_description">Fill the Description first!</string>
+    <string name="miss_capture">Missed capturing image</string>
     <string name="success_alert">Success!</string>
     <string name="error_alert">Error shown!</string>
+
+    <!-- Maps Variation -->
+    <string name="title_maps">Google Maps</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
 
 </resources>
