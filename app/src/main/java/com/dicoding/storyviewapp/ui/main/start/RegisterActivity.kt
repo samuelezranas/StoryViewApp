@@ -16,10 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
 import com.dicoding.storyviewapp.R
-import com.dicoding.storyviewapp.utils.ViewModelFactory
 import com.dicoding.storyviewapp.data.remote.response.RegisterResponse
 import com.dicoding.storyviewapp.databinding.ActivityRegisterBinding
 import com.dicoding.storyviewapp.ui.viewmodel.RegisterViewModel
+import com.dicoding.storyviewapp.utils.ViewModelFactory
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -40,7 +40,6 @@ class RegisterActivity : AppCompatActivity() {
 
         setupView()
         setupAction()
-        playAnimation()
     }
 
     private fun setupView() {

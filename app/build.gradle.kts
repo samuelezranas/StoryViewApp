@@ -39,16 +39,19 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
         viewBinding = true
         buildConfig = true
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     val lottieVersion = "3.4.1"
     val cameraXVersion = "1.3.3"
     val verLifecycle = "2.8.1"
@@ -94,7 +97,8 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0") // InstantTaskExecutorRule
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3") //TestDispatcher
     testImplementation("org.mockito:mockito-core:5.2.0")
-    testImplementation("org.mockito:mockito-inline:3.12.4")
+    testImplementation("org.mockito:mockito-inline:4.4.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
     // Pagging & Room Runtime
     implementation("androidx.paging:paging-runtime-ktx:3.3.0")
